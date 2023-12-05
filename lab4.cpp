@@ -26,7 +26,9 @@ void doCmd() {
         char cmd [256];
         std::cout << "Enter shell cmd : \n";
         std::cin.clear();
-        std::cin.getline(cmd, 256, ';');
+        std::cin >> cmd;
+        std::cout << std::endl;
+        system(cmd);
         exit(0);
     }
     wait(&status);
@@ -50,7 +52,8 @@ void doTask() {
         std::cin >> pid;
         kill(pid, SIGKILL);
         exit(0);
-    }        
+    }   
+     wait(&status);   
 }
 
 int main()
