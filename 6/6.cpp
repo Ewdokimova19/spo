@@ -1,8 +1,18 @@
-#include <iostream> 
-#include <fstream>
-#include <cstdlib> 
-#include <iomanip>
-#include <stdio.h>
+#include <sys/msg.h>
+#include <sys/ipc.h>
+#include <sys/wait.h>
+#include <unistd.h>
+ 
+ #include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <vector> 
+
+#define MSGKEY 75
+
+// | \n
+
+ using namespace std; 
 
 size_t COUNT_THREAD;
 
@@ -15,7 +25,7 @@ size_t COUNT_THREAD;
 int n;
 int buf_sqr;
 int** fill_Matrix(int** arr){
-	ifstream in("in");
+	ifstream in("in.txt"); 
 	in >> n;
 	arr = new int* [n];
 	for (int i = 0; i < n; i++) {
